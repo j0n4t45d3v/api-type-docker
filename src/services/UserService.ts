@@ -1,9 +1,9 @@
-import { hashSync } from 'bcrypt';
-import { sign } from 'crypto';
-import 'dotenv/config';
-import { AppDataSource } from '../database/datasource';
-import { User } from '../models/User';
-import { UserRepository } from '../repositories/UserRepository';
+import { hashSync } from "bcrypt";
+import { sign } from "jsonwebtoken";
+import "dotenv/config";
+import { AppDataSource } from "../database/datasource";
+import { User } from "../models/User";
+import { UserRepository } from "../repositories/UserRepository";
 
 export class UserService {
   private userRepository: UserRepository;
@@ -34,9 +34,14 @@ export class UserService {
 
     const secret = process.env.SECRET;
 
-    if(userExist){
-      if(userExist.getPassword() == password){
-        
+    if (userExist) {
+      if (userExist.getPassword() == password && secret !== undefined) {
+        const token = sign(
+          {
+            email: userExist.getEmail(),
+          },
+          secret
+        );
       }
     }
   }

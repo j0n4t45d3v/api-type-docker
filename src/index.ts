@@ -4,7 +4,7 @@ import 'reflect-metadata';
 import { UserController } from './controllers/UserController';
 import { AppDataSource } from './database/datasource';
 
-export class ApiLogin extends Server {
+export class Application extends Server {
   constructor() {
     super();
     this.app.use(bodyParser.json());

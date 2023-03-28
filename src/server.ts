@@ -1,5 +1,5 @@
-import { ApiLogin } from './index';
+import { Application } from './index';
 
-const server = new ApiLogin();
+const server = new Application();
 
 server.start(3000);
