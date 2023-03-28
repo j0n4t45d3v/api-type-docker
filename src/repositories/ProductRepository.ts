@@ -8,11 +8,11 @@ export class ProductRepository {
     this.entityManager = entityManager;
   }
 
-  public async getAllProducts(): Promise<Array<Product>> {
+  public async findAllProducts(): Promise<Array<Product>> {
     return await this.entityManager.find(Product);
   }
 
-  public async getProduct(id: number): Promise<Product | null> {
+  public async findProduct(id: number): Promise<Product | null> {
     return await this.entityManager
       .getRepository(Product)
       .createQueryBuilder("products")

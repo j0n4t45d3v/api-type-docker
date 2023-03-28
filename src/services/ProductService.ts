@@ -11,8 +11,12 @@ export class ProductService {
     this.repository = repository;
   }
 
-  public async findAllProducts(): Promise<Array<Product>> {
-    return await this.repository.getAllProducts();
+  public async getAllProducts(): Promise<Array<Product>> {
+    return await this.repository.findAllProducts();
   } 
+
+  public async getProductById(id: number): Promise<Product | null> {
+    return await this.repository.findProduct(id);
+  }
   
 }
