@@ -1,4 +1,5 @@
 import { AppDataSource } from "../database/datasource";
+import { Product } from "../models/Products";
 import { ProductRepository } from "../repositories/ProductRepository";
 
 export class ProductService {
@@ -10,5 +11,8 @@ export class ProductService {
     this.repository = repository;
   }
 
+  public async findAllProducts(): Promise<Array<Product>> {
+    return await this.repository.getAllProducts();
+  } 
   
 }
