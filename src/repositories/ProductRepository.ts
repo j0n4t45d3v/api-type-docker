@@ -24,11 +24,11 @@ export class ProductRepository {
     await this.entityManager.save(product);
   }
 
-  public async remove(product: Product): Promise<void> {
-    await this.entityManager.remove(product);
+  public async remove(id: string): Promise<void> {
+    await this.entityManager.delete(Product, id);
   }
 
-  public async update(product: Product): Promise<void>{
-    await this.entityManager.update(Product, product, { getBarcod: product.getBarcod() });
+  public async update(id: string, product: Product): Promise<void>{
+    await this.entityManager.update(Product, product, { getBarcod: id });
   }
 }

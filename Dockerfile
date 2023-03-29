@@ -1,14 +1,14 @@
-FROM node:lastest
+FROM node:18
 
 WORKDIR /api-type-docker
 
 COPY package*.json ./
 
-RUN npm i
+RUN npm install
 
-COPY ..
+COPY . .
 
-RUN npm build
+RUN npm run build
 
 EXPOSE 3000
 

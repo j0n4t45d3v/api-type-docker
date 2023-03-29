@@ -1,9 +1,9 @@
-import { hashSync } from "bcrypt";
-import { sign } from "jsonwebtoken";
-import "dotenv/config";
-import { AppDataSource } from "../database/datasource";
-import { User } from "../models/User";
-import { UserRepository } from "../repositories/UserRepository";
+import { compareSync, hashSync } from 'bcrypt';
+import 'dotenv/config';
+import { sign } from 'jsonwebtoken';
+import { AppDataSource } from '../database/datasource';
+import { User } from '../models/User';
+import { UserRepository } from '../repositories/UserRepository';
 
 export class UserService {
   private userRepository: UserRepository;
@@ -29,19 +29,21 @@ export class UserService {
     await this.userRepository.created(user);
   }
 
-  public async login(email: string, password: string): Promise<void> {
+  public async loginUser(email: string,password: string): Promise<string | undefined> {
     const userExist: User | null = await this.userRepository.findByEmail(email);
 
     const secret = process.env.SECRET;
 
     if (userExist) {
-      if (userExist.getPassword() == password && secret !== undefined) {
+      const checkPassowrd = compareSync(password, userExist.getPassword());
+      if (checkPassowrd && secret !== undefined) {
         const token = sign(
           {
             email: userExist.getEmail(),
           },
           secret
         );
+        return token;
       }
     }
   }

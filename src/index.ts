@@ -1,6 +1,7 @@
 import { Server } from '@overnightjs/core';
 import bodyParser from 'body-parser';
 import 'reflect-metadata';
+import { ProductController } from './controllers/ProductController';
 import { UserController } from './controllers/UserController';
 import { AppDataSource } from './database/datasource';
 
@@ -16,8 +17,9 @@ export class Application extends Server {
 
   private setupController(): void {
     const userController = new UserController();
+    const productController = new ProductController();
 
-    super.addControllers([userController]);
+    super.addControllers([userController, productController]);
   }
 
   private setupDatabase(): void {
