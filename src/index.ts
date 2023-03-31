@@ -4,6 +4,8 @@ import 'reflect-metadata';
 import { ProductController } from './controllers/ProductController';
 import { UserController } from './controllers/UserController';
 import { AppDataSource } from './database/datasource';
+import swagerUi from "swagger-ui-express"
+import swaggerDocs from "./swagger.json"
 
 export class Application extends Server {
   constructor() {
@@ -11,6 +13,7 @@ export class Application extends Server {
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
 
+    this.app.use("/doc", swagerUi.serve, swagerUi.setup(swaggerDocs))
     this.setupController();
     this.setupDatabase();
   }

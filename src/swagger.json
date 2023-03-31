@@ -1,0 +1,82 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "titlte": "API de gerenciamento de estoque",
+    "description": "Essa api tem como objetivo fazer o gerenciamento de estoque e dizer a quantidade de produtos no estoque adicionar produtos ao estoque e fazer a filtragem dos produtos para ficar mais facil de gerenciar",
+    "contact": {
+      "email": "delimajonatas875@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Developments api"
+    },
+    {
+      "url": "https://api-type-gerneciamento-estoque.onrender.com/",
+      "description": "Production api"
+    }
+  ],
+  "paths": {
+    "/users/register": {
+      "post": {
+        "summary": "cadastro de usuarios",
+        "description": "Rota respoonsavel pelo cadastro de novos usuarios",
+        "tags": ["Users"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Users"
+              },
+              "examples": {
+                "user": {
+                  "value": {
+                    "id": 1,
+                    "name": "Jonh Doe",
+                    "email": "johndoe@gmail.com",
+                    "password": "password",
+                    "office": "Gerente"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "CREATED"
+          },
+          "500": {
+            "description": "INTERNAL SERVER ERROR"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Users": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "office": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
