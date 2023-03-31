@@ -6,6 +6,6 @@ export const AppDataSource = new DataSource({
   type: 'postgres',
   url: 'postgres://ockiwslh:NgubKUTfHbHNvjMtBXxQ6lK_C6Q5uzMY@motty.db.elephantsql.com/ockiwslh',
   entities: [User, Product],
-  migrations: ['src/database/migrations/*.{ts,js}'],
+  migrations: ['./database/migrations/*.{ts,js}'],
   synchronize: true
 });

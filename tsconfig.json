@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "strict": true,
@@ -10,7 +11,8 @@
     "outDir": "dist",
     "noImplicitAny": true,
     "sourceMap": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "module": "CommonJS"
   },
   "include": [
     "src"
