@@ -10,12 +10,12 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000",
-      "description": "Developments api"
-    },
-    {
       "url": "https://api-type-gerneciamento-estoque.onrender.com/",
       "description": "Production api"
+    },
+    {
+      "url": "http://localhost:3000",
+      "description": "Developments api"
     }
   ],
   "paths": {
@@ -53,6 +53,60 @@
           }
         }
       }
+    },
+    "/users": {
+      "get": {
+        "summary": "retorna todos os usuarios",
+        "description": "Rota respoonsavel pelo busca dos usuarios",
+        "security": [{"bearerAuth" : []}],
+        "tags": ["Users"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Users"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL SERVER ERROR"
+          }
+        }
+      }
+    },
+    "/products": {
+      "get": {
+        "summary": "retorna todos os produtos",
+        "description": "Rota respoonsavel pelo busca dos produtos",
+        "tags": ["Products"],
+        "responses": {
+          "200": {
+            "description": "CREATED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Products"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED"
+          },
+          "500": {
+            "description": "INTERNAL SERVER ERROR"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -76,6 +130,36 @@
             "type": "string"
           }
         }
+      },
+      "Products": {
+        "type": "object",
+        "properties": {
+          "barcod": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          },
+          "sector": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes":{
+      "bearerAuth":{
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }

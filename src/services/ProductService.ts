@@ -1,5 +1,5 @@
 import { AppDataSource } from '../database/datasource';
-import { Product } from '../models/Products';
+import { Product } from '../models/Product';
 import { ProductRepository } from '../repositories/ProductRepository';
 
 export class ProductService {

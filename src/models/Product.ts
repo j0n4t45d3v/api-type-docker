@@ -15,7 +15,7 @@ export class Product {
   private quantity: number;
 
   @Column()
-  private price: string;
+  private price: number;
 
   @Column()
   private sector: string;
@@ -25,7 +25,7 @@ export class Product {
     name: string,
     brand: string,
     quantity: number,
-    price: string,
+    price: number,
     sector: string
   ) {
     this.barcod = barcod;
@@ -68,11 +68,11 @@ export class Product {
     this.quantity = quantity;
   }
 
-  public getPrice(): string {
+  public getPrice(): number {
     return this.price;
   }
 
-  public setPrice(price: string) {
+  public setPrice(price: number) {
     this.price = price;
   }
 

@@ -1,5 +1,5 @@
 import { EntityManager } from "typeorm";
-import { Product } from "../models/Products";
+import { Product } from "../models/Product";
 
 export class ProductRepository {
   private entityManager: EntityManager;

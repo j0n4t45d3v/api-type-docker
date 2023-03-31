@@ -1,6 +1,6 @@
 import { Controller, Delete, Get, Patch, Post } from '@overnightjs/core';
 import { Request, Response } from 'express';
-import { Product } from '../models/Products';
+import { Product } from '../models/Product';
 import { ProductService } from '../services/ProductService';
 
 @Controller('products')
