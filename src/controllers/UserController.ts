@@ -2,7 +2,7 @@ import { Controller, Delete, Get, Middleware, Patch, Post } from '@overnightjs/c
 import { Request, Response } from 'express';
 import { User } from '../models/User';
 import { UserService } from '../services/UserService';
-import { VerifyTokenUser } from '../services/VerifyTokenUser';
+import { VerifyTokenUser } from '../services/middleware/VerifyTokenUser';
 
 const verifyTokenUser = new VerifyTokenUser();
 
