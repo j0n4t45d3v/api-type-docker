@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "titlte": "API de gerenciamento de estoque",
+    "title": "API de gerenciamento de estoque",
     "description": "Essa api tem como objetivo fazer o gerenciamento de estoque e dizer a quantidade de produtos no estoque adicionar produtos ao estoque e fazer a filtragem dos produtos para ficar mais facil de gerenciar",
     "contact": {
       "email": "delimajonatas875@gmail.com"
