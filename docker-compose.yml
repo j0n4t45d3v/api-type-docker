@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  db: 
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: stock-mark
+    ports:
+      - "5432:5432"
+
+  app: 
+    build: .
+    command: npm start
+    ports: 
+      - "3000:3000"
